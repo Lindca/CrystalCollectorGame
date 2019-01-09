@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Aclonica|Cabin+Sketch|Gugi|Miniver|Rajdhani" rel="stylesheet">
@@ -25,7 +26,7 @@
                 
             </div>
             <div id="randomNumber" class="col-sm-2">
-                <p>randomNumber</p>
+                <p></p>
             </div>
             <div id="currentScore" class="col-sm-2">
                 <p>currentScore</p>
@@ -86,39 +87,49 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="./assets/javascript/javascript.js">
+    <script type="text/javascript" >//src="./assets/javascript/javascript.js"
         $(document).ready(function () {
             var firstCrystal = "";
             var secondCrystal = "";
             var secondCrystal = "";
             var secondCrystal = "";
-            var result = "";
             var currentScore = "";
             var randomNumber = "";
             var wins = "";
             var losses = "";
 
-
+            var randomNumber=Math.floor(Math.random() * (120 - 19 + 1)) + 19; 
+            $("#randomNumber").text(randomNumber);
             $(".crystal").on("click", function () {
                 if (firstCrystal !== "") {
+                    firstCrystal.val=Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                     firstCrystal += $(this).val();
-                    // $("#second-Crystal").text(secondCrystal);
                 }
-                if (firstCrystal !== "") {
+                else if (firstCrystal !== "") {
+                    secondCrystal.val=Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                     secondCrystal += $(this).val();
-                    // $("#second-Crystal").text(secondCrystal);
                 }
-                if (secondCrystal !== "") {
+                else if (secondCrystal !== "") {
+                    thirdCrystal.val=Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                     thirdCrystal += $(this).val();
-                    // $("#second-Crystal").text(secondCrystal);
                 }
-                if (thirdCrystal !== "") {
+                else if (thirdCrystal !== "") {
+                    fourthCrystal.val=Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                     fourthCrystal += $(this).val();
-                    // $("#second-Crystal").text(secondCrystal);
-                }
+                };
 
                 // displaying
-                $('#result').text(result);
+                if(firstCrystal!==""& secondCrystal!==""&){
+                    currentScore=firstCrystal+secondCrystal;
+                    $('#currentScore').text(currentScore);
+                }
+                else if(firstCrystal!==""& secondCrystal!==""& thirdCrystal!==""){
+                    currentScore=firstCrystal+secondCrystal+thirdCrystal;
+                    $('#currentScore').text(currentScore);
+                }
+                else if(firstCrystal!==""& secondCrystal!==""& thirdCrystal!==""& fourthCrystal!==""){
+                    currentScore=firstCrystal+secondCrystal+thirdCrystal+fourthCrystal;
+                    $('#currentScore').text(currentScore);
             });
 
             $('.restart').on('click', function () {
@@ -133,6 +144,7 @@
                 var losses = "";
 
             });
+        })
         //     $(document).ready(function() {
         // // $('.number').on('click', function() {
         // //   console.log($(this).val());
