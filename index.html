@@ -19,26 +19,26 @@
             <h1 class="display-4">Collect the Crystals!</h1>
             <p class="lead">Collect as many Crystals as you like but stay under the given Number!</p>
         </div>
-    </div>
-    <div class="container">
-        <div class="row align-items-center">
-            <div id="nothing" class="col-sm-2">
-
-            </div>
-            <div class="col-sm-2">
-                <p>Crystal Amount <span id="randomNumberCounter"></span></p>
-            </div>
-            <div class="col-sm-2">
-                <p>Current Score<span id="currentScoreCounter"></span></p>
-            </div>
-            <div class="col-sm-2">
-                <p>Wins<span id="winsCounter"></span></p>
-            </div>
-            <div class="col-sm-2">
-                <p>Losses<span id="lossesCounter"></span></p>
-            </div>
-            <div id="nothing" class="col-sm-2">
-
+        <div class="container">
+            <div class="row align-items-center">
+                <div id="nothing" class="col-sm-2">
+    
+                </div>
+                <div class="col-sm-2">
+                    <p>Crystal Amount <span id="randomNumberCounter"></span></p>
+                </div>
+                <div class="col-sm-2">
+                    <p>Current Score<span id="currentScoreCounter"></span></p>
+                </div>
+                <div class="col-sm-2">
+                    <p>Wins<span id="winsCounter"></span></p>
+                </div>
+                <div class="col-sm-2">
+                    <p>Losses<span id="lossesCounter"></span></p>
+                </div>
+                <div id="nothing" class="col-sm-2">
+    
+                </div>
             </div>
         </div>
     </div>
@@ -112,32 +112,25 @@
             })
             $(".crystal").on("click", function () {
                 if (currentScore > randomNumber) {
-                    restart();
                     losses++;
                     $('#lossesCounter').text(losses);
+                    restart();
                 }
                 else if (currentScore === randomNumber) {
-                    restart();
                     wins++;
                     $('#winsCounter').text(wins);
+                    restart();
                 }
             });
-
+        
             function restart() {
+                $('.crystal1, .crystal2, .crystal3,  .crystal4, #currentScoreCounter').empty();
                 var currentScore = 0;
                 var firstCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                 var secondCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                 var thirdCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                 var fourthCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
                 var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
-                $('.crystal1').val(firstCrystal);
-                $('.crystal2').val(secondCrystal);
-                $('.crystal3').val(thirdCrystal);
-                $('.crystal4').val(fourthCrystal);
-                $("#currentScoreCounter").val(currentScore);
-                $('#randomNumberCounter').val(randomNumber);
-                $("#currentScoreCounter").text(currentScore);
-                $('#randomNumberCounter').text(randomNumber);
                 console.log(wins);
                 console.log(losses);
             }
@@ -194,7 +187,7 @@
     //       secondNumber = '';
     //       operator = '';
     //       result = '';
-    //       $('#first-number, #second-number, #operator, #result').empty();
+    //       $('#Crystal1 #sCrystal1 #operator, #result').empty();
     //     });
     //   });
     </script>

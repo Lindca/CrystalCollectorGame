@@ -1,17 +1,32 @@
-.jumbotron{
+body{
+    background-image: url(../images/connectwork.png)
+}
+.jumbotron1{
     font:40px;
     font-family: 'Aclonica', sans-serif;
     background:#5B48A1;
+    height: 250px;
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+}
+.jumbotron2{
+    font:40px;
+    font-family: 'Aclonica', sans-serif;
+    background:#5B48A1;
+    height: 450px;
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
 }
 p{
     font:40px;
     font-family: 'Aclonica', sans-serif;
-
 }
-.btn{
-    font:40px;
-    font-family: 'Aclonica', sans-serif;
+button{
+    background-color: #5B48A1;
+    border: #5B48A1;
 }
-#randomNumber{
-    font-family: 'Aclonica', sans-serif;
+.card{
+    background-color: #5B48A1;
 }
