@@ -25,16 +25,36 @@
     
                 </div>
                 <div class="col-sm-2">
-                    <p>Crystal Amount <span id="randomNumberCounter"></span></p>
+                    <p>Crystal Amount</p>
                 </div>
                 <div class="col-sm-2">
-                    <p>Current Score<span id="currentScoreCounter"></span></p>
+                    <p>Current Score</p>
                 </div>
                 <div class="col-sm-2">
-                    <p>Wins<span id="winsCounter"></span></p>
+                    <p>Wins</p>
                 </div>
                 <div class="col-sm-2">
-                    <p>Losses<span id="lossesCounter"></span></p>
+                    <p>Losses</p>
+                </div>
+                <div id="nothing" class="col-sm-2">
+    
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div id="nothing" class="col-sm-2">
+    
+                </div>
+                <div class="col-sm-2">
+                    <p id="randomNumberCounter"></p>
+                </div>
+                <div class="col-sm-2">
+                    <p id="currentScoreCounter"></p>
+                </div>
+                <div class="col-sm-2">
+                    <p id="winsCounter"></p>
+                </div>
+                <div class="col-sm-2">
+                    <p id="lossesCounter"></p>
                 </div>
                 <div id="nothing" class="col-sm-2">
     
@@ -85,11 +105,25 @@
             var currentScore = 0;
             var wins = 0;
             var losses = 0;
+            var isCalculated= true;
             $("#randomNumberCounter").text(randomNumber);
+            restart();
             $(".crystal1").on("click", function () {
                 if (currentScore < randomNumber) {
                     currentScore += firstCrystal;
                     $('#currentScoreCounter').text(currentScore);
+                }
+                if (currentScore > randomNumber && isCalculated) {
+                    losses++;
+                    $('#lossesCounter').text(losses);
+                    isCalculated=false;
+                    restart();
+                }
+                else if (currentScore === randomNumber && isCalculated) {
+                    wins++;
+                    $('#winsCounter').text(wins); 
+                    isCalculated=false;
+                    restart();
                 }
             })
             $(".crystal2").on("click", function () {
@@ -97,11 +131,35 @@
                     currentScore += secondCrystal;
                     $('#currentScoreCounter').text(currentScore);
                 }
+                if (currentScore > randomNumber && isCalculated) {
+                    losses++;
+                    $('#lossesCounter').text(losses);
+                    isCalculated=false;
+                    restart();
+                }
+                else if (currentScore === randomNumber && isCalculated) {
+                    wins++;
+                    $('#winsCounter').text(wins); 
+                    isCalculated=false;
+                    restart();
+                }
             })
             $(".crystal3").on("click", function () {
                 if (currentScore < randomNumber) {
                     currentScore += thirdCrystal;
                     $('#currentScoreCounter').text(currentScore);
+                }
+                if (currentScore > randomNumber && isCalculated) {
+                    losses++;
+                    $('#lossesCounter').text(losses);
+                    isCalculated=false;
+                    restart();
+                }
+                else if (currentScore === randomNumber && isCalculated) {
+                    wins++;
+                    $('#winsCounter').text(wins); 
+                    isCalculated=false;
+                    restart();
                 }
             })
             $(".crystal4").on("click", function () {
@@ -109,28 +167,30 @@
                     currentScore += fourthCrystal;
                     $('#currentScoreCounter').text(currentScore);
                 }
-            })
-            $(".crystal").on("click", function () {
-                if (currentScore > randomNumber) {
+                if (currentScore > randomNumber && isCalculated) {
                     losses++;
                     $('#lossesCounter').text(losses);
+                    isCalculated=false;
                     restart();
                 }
-                else if (currentScore === randomNumber) {
+                else if (currentScore === randomNumber && isCalculated) {
                     wins++;
-                    $('#winsCounter').text(wins);
+                    $('#winsCounter').text(wins); 
+                    isCalculated=false;
                     restart();
                 }
-            });
+            })
         
             function restart() {
                 $('.crystal1, .crystal2, .crystal3,  .crystal4, #currentScoreCounter').empty();
-                var currentScore = 0;
-                var firstCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
-                var secondCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
-                var thirdCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
-                var fourthCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
-                var randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+                currentScore = 0;
+                firstCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+                secondCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+                thirdCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+                fourthCrystal = Math.floor(Math.random() * (12 - 1 + 1)) + 1;
+                randomNumber = Math.floor(Math.random() * (120 - 19 + 1)) + 19;
+                isCalculated=true;
+                $("#randomNumberCounter").text(randomNumber);
                 console.log(wins);
                 console.log(losses);
             }

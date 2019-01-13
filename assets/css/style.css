@@ -5,7 +5,7 @@ body{
     font:40px;
     font-family: 'Aclonica', sans-serif;
     background:#5B48A1;
-    height: 250px;
+    height: 260px;
     width: 80%;
     text-align: center;
     margin: 20px auto;
@@ -20,7 +20,7 @@ body{
     margin: 20px auto;
 }
 p{
-    font:40px;
+    font:70px;
     font-family: 'Aclonica', sans-serif;
 }
 button{
